@@ -6,7 +6,7 @@
 </head>
 <body>
     <nav>
-        <a href="{% url 'recipe_list' %}" class="logo">🍳 RecipeBook</a>
+        <a href="{% url 'recipe_list' %}" class="logo">RecipeBook</a>
         <div>
             {% if user.is_authenticated %}
                 <span>Hi, {{ user.username }}</span>
