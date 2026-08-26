@@ -11,9 +11,9 @@ def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('recipe_list')
+            form.save()
+            messages.success(request, 'Account created successfully! Please log in.')
+            return redirect('login')
     else:
         form = SignUpForm()
     return render(request, 'recipes/signup.html', {'form': form})
