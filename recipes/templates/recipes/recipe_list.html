@@ -1,0 +1,19 @@
+{% extends 'recipes/base.html' %}
+{% block content %}
+<h2>All Recipes</h2>
+<div class="recipe-grid">
+    {% for recipe in recipes %}
+        <div class="recipe-card">
+            {% if recipe.image %}
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}">
+            {% else %}
+                <div class="no-image">No Image</div>
+            {% endif %}
+            <h3><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.name }}</a></h3>
+            <p>By {{ recipe.owner.username }}</p>
+        </div>
+    {% empty %}
+        <p>No recipes yet. Be the first to add one!</p>
+    {% endfor %}
+</div>
+{% endblock %}

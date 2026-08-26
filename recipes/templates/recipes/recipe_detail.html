@@ -1,0 +1,15 @@
+{% extends 'recipes/base.html' %}
+{% block content %}
+<h2>{{ recipe.name }}</h2>
+{% if recipe.image %}
+    <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}" class="detail-image">
+{% endif %}
+<p>{{ recipe.description }}</p>
+<p><em>Added by {{ recipe.owner.username }}</em></p>
+
+{% if recipe.owner == user %}
+    <a href="{% url 'recipe_edit' recipe.pk %}">Edit</a>
+    <a href="{% url 'recipe_delete' recipe.pk %}">Delete</a>
+{% endif %}
+<a href="{% url 'recipe_list' %}">Back to all recipes</a>
+{% endblock %}

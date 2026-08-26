@@ -1,0 +1,10 @@
+{% extends 'recipes/base.html' %}
+{% block content %}
+<h2>Delete "{{ recipe.name }}"?</h2>
+<p>This action cannot be undone.</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+    <a href="{% url 'recipe_detail' recipe.pk %}">Cancel</a>
+</form>
+{% endblock %}
